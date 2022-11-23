@@ -1,10 +1,15 @@
 <script>
-  import { fade } from "svelte/transition";
   import Main from "./Main.svelte";
+  import { addNewUser } from "./api.js";
 
+  let name = "";
+  let user = {};
   let currentState = false;
 
-  function toogleView() {
+  async function toogleView() {
+    const result = await addNewUser(name);
+    console.log(result);
+    user = result.data.data;
     currentState = true;
   }
 </script>
@@ -13,14 +18,14 @@
   <div class="container">
     <div class="userinput_form">
       <p>Stock Watch List</p>
-      <input type="text" placeholder="Enter your username" />
+      <input type="text" placeholder="Enter your username" bind:value={name}/>
       <button on:click={toogleView}>O K</button>
     </div>
   </div>
 {/if}
 
 {#if currentState === true}
-	<svelte:component this={Main} answer={110}></svelte:component>
+	<svelte:component this={Main} user={user}></svelte:component>
 {/if}
 
 <style>
