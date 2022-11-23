@@ -8,6 +8,11 @@ export const addNewUser = async (username) => {
 }
 
 export const getWatchList = async (userid) => {
-  const result = await axios.get(`${SERVER_URL}api/watchlist`, {data: userid});
-  return result;
+  const result = await axios.get(`${SERVER_URL}api/watchlist/${userid}`);
+  return result.data;
+}
+
+export const addWatchList = async (userid, listname) => {
+  const result = await axios.post(`${SERVER_URL}api/watchlist`, {data: {userid: userid, name:listname}});
+  return result.data; 
 }
