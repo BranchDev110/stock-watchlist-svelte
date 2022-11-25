@@ -4,6 +4,10 @@ html, body {
 	height: 100%;
 }
 
+*{
+	box-sizing: border-box !important;
+}
+
 body {
 	color: #333;
 	margin: 0;
@@ -44,20 +48,18 @@ input:disabled {
 	color: #ccc;
 }
 
-button {
-	color: #333;
-	background-color: #f4f4f4;
-	outline: none;
+.btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+	background: none;
+	border: none;
+	color: #1976d2;
+	cursor: pointer;
+	margin: 0;
+	transition: all 0.3s ease;
 }
-
-button:disabled {
-	color: #999;
-}
-
-button:not(:disabled):active {
-	background-color: #ddd;
-}
-
-button:focus {
-	border-color: #666;
+.btn:hover{
+	background-color: rgba(25,120,110,0.1);
 }
